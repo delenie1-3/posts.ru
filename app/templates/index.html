@@ -1,17 +1,9 @@
-<html>
-    <head>
-        {% if title%}
-        <title>{{ title }} - Posts</title>
-        {% else %}
-        <title>Добро пожаловать на Posts.ru!</title>
-        {% endif %}
-    </head>
-    <body>
-        <h1>Приветствую, {{ user.username }}!</h1>
-        {% for post in posts %}
-            <div>
-                <p>Постик от пользователя <i>{{ post.author.username }}</i>: <b>{{ post.body }}</b></p>
-            </div>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Приветствую, {{ user.username }}!</h1>
+    {% for post in posts %}<!--Вывод постов от пользователей-->
+        <div>
+            <p>Постик от пользователя <i>{{ post.author.username }}</i>: <b>{{ post.body }}</b></p>
+        </div>
+    {% endfor %}
+{% endblock %}
