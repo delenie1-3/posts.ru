@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+from flask import render_template
 from app import app
 
 '''@app.route('/')
@@ -9,14 +10,19 @@ def index():
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username':'web-dev'}
-    return '''
-    <html>
-        <head>
-            <title>Домашная страница - Posts</title>
-        </head>
-        <body>
-            <h1>Приветствую, ''' + user['username'] + '''!</h1>
-        </body>
-    </html>
-    '''
+    user = {'username':'web-dev'}#проверочный пользователь(поддельный объект)
+    posts = [
+        {
+            'author':{'username':'Саша'},
+            'body':'Сообщение от Саши!'
+        },
+        {
+            'author':{'username':'Даша'},
+            'body':'Сообщение от Даши!'
+        },
+        {
+            'author':{'username':'Наташа'},
+            'body':'Сообщение от Наташи!'
+        }
+    ]
+    return render_template('index.html', title='Домашняя страница', user=user, posts=posts)#главная страница

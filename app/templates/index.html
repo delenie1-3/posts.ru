@@ -1,8 +1,17 @@
 <html>
-        <head>
-            <title>Домашная страница - Posts</title>
-        </head>
-        <body>
-            <h1>Приветствую, {{ user.username }}!</h1>
-        </body>
-    </html>
+    <head>
+        {% if title%}
+        <title>{{ title }} - Posts</title>
+        {% else %}
+        <title>Добро пожаловать на Posts.ru!</title>
+        {% endif %}
+    </head>
+    <body>
+        <h1>Приветствую, {{ user.username }}!</h1>
+        {% for post in posts %}
+            <div>
+                <p>Постик от пользователя <i>{{ post.author.username }}</i>: <b>{{ post.body }}</b></p>
+            </div>
+        {% endfor %}
+    </body>
+</html>
