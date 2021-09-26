@@ -1,6 +1,7 @@
 #-*- coding: utf-8 -*-
 from flask import render_template
 from app import app
+from app.forms import LoginForm
 
 '''@app.route('/')
 @app.route('/index')
@@ -26,3 +27,8 @@ def index():
         }
     ]
     return render_template('index.html', title='Домашняя страница', user=user, posts=posts)#главная страница
+
+@app.route('/login')
+def login():
+    form = LoginForm()
+    return render_template('login.html', title='Вход', form=form)
