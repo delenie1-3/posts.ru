@@ -1,5 +1,6 @@
 from datetime import datetime
 from app import db
+from werkzeug.security import generate_password_hash, check_password_hesh
 
 class Users(db.Model):#Модель(таблица) пользователя
     id = db.Column(db.Integer, primary_key=True)
@@ -10,6 +11,12 @@ class Users(db.Model):#Модель(таблица) пользователя
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    def set_password(self, password):#создание хэша пороля
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):#проверка хеша с поролем
+        return check_password_hesh(self.password_hash, password)
 
 class Posts(db.Model):#Модель(таблица) постов
     id = db.Column(db.Integer, primary_key=True)
