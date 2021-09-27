@@ -1,10 +1,21 @@
+from datetime import datetime
 from app import db
 
-class Users(db.Model):#модель пользователя
+class Users(db.Model):#Модель(таблица) пользователя
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    posts = db.relationship('Posts', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+class Posts(db.Model):#Модель(таблица) постов
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    timestamp = db.Column(db.Integer, index=True, default=datetime.utcnow) 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __repr__(self):
+        return '<Post {}>'.format(self.body)
