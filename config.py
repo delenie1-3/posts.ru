@@ -5,6 +5,6 @@ class Config(object):#класс конфигурации приложения
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'#от CSRF атак
 
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
+        'sqlite:///' + os.path.join(basedir, 'app.db')#конфигурация БД
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 

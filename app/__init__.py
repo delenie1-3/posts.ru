@@ -5,12 +5,13 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 app = Flask(__name__)#основное приложение
-app.config.from_object(Config)
+app.config.from_object(Config)#приложение конфигурации
 
 db = SQLAlchemy(app)#БД
-migrate = Migrate(app, db)
+migrate = Migrate(app, db)#миграция БД
 
 login = LoginManager(app)#приложение логин
+login.login_view = 'login'#перенаправление на ввод логина
 
 
 

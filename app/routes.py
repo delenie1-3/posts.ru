@@ -1,10 +1,11 @@
 #-*- coding: utf-8 -*-
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, request
 from app import app
 from app.forms import LoginForm
 from flask_login import current_user, login_user
 from app.models import Users
-from flassk_login import logout_user
+from flassk_login import logout_user, login_required
+from werkzeug.urls import url_parse
 
 '''@app.route('/')
 @app.route('/index')
@@ -13,6 +14,7 @@ def index():
 
 @app.route('/')
 @app.route('/index')
+@login_required#декоратор для не аутентифицированных
 def index():
     user = {'username':'web-dev'}#проверочный пользователь(поддельный объект)
     posts = [
@@ -42,7 +44,10 @@ def login():
             flash('Неправильное имя пользователя или пароль')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
-        return redirect(url_for('index'))
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
     return render_template('login.html', title='Вход', form=form)
 
 @app.route('/logout')
