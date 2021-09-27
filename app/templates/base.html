@@ -13,8 +13,8 @@
     <body>
         <div>
             Posts.ru: 
-            <a href="/index">Главная</a>
-            <a href="/login">Вход</a>
+            <a href="{{ url_for('index') }}">Главная</a>
+            <a href="{{ url_for('login') }}">Вход</a>
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
