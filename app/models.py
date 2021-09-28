@@ -3,6 +3,7 @@ from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from app import login
+from hashlib import md5
 
 class Users(UserMixin, db.Model):#Модель(таблица) пользователя и входа
     id = db.Column(db.Integer, primary_key=True)
@@ -19,6 +20,10 @@ class Users(UserMixin, db.Model):#Модель(таблица) пользова�
 
     def check_password(self, password):#проверка хеша с поролем
         return check_password_hash(self.password_hash, password)
+
+    def avatar(self, size):#метод получения аватарки пользователя с gravatar
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
 
 class Posts(db.Model):#Модель(таблица) постов
     id = db.Column(db.Integer, primary_key=True)
