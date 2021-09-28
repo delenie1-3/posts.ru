@@ -23,5 +23,5 @@ class RegistrationForm(FlaskForm):#Форма регистрации
     
     def validate_email(self, email):#проверка email в БД
         user_email = Users.query.filter_by(email=email.data).first()
-        if user_enail is not None:
+        if user_email is not None:
             raise ValidationError('Пожалуйста используйте другой email')
