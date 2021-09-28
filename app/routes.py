@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
-from flask import render_template, flash, redirect, request
-from app import app
+from flask import render_template, flash, redirect, request, url_for
+from app import app, login
 from app.forms import LoginForm
 from flask_login import current_user, login_user
 from app.models import Users
@@ -31,7 +31,7 @@ def index():
             'body':'Сообщение от Наташи!'
         }
     ]
-    return render_template('index.html', title='Домашняя страница', user=user, posts=posts)#главная страница
+    return render_template('index.html', title='Домашняя страница', posts=posts)#главная страница
 
 @app.route('/login', methods=['GET','POST'])#страница входа пользователя
 def login():

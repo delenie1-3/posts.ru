@@ -18,7 +18,7 @@ class Users(UserMixin, db.Model):#Модель(таблица) пользова�
         self.password_hash = generate_password_hash(password)
 
     def check_password(self, password):#проверка хеша с поролем
-        return check_password_hesh(self.password_hash, password)
+        return check_password_hash(self.password_hash, password)
 
 class Posts(db.Model):#Модель(таблица) постов
     id = db.Column(db.Integer, primary_key=True)
@@ -31,4 +31,4 @@ class Posts(db.Model):#Модель(таблица) постов
 
 @login.user_loader
 def load_user(id):#загрузчик пользлвательского id
-    return User.query.get(ini(id))
+    return Users.query.get(int(id))
