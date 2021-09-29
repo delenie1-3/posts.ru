@@ -68,3 +68,5 @@ sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed
 [SQL: UPDATE users SET username=?, about_me=? WHERE users.id = ?]
 [parameters: ('user1', 'Я проверочный пользователь 2', 2)]
 (Background on this error at: https://sqlalche.me/e/14/gkpj)
+2021-09-29 17:50:03,157 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-29 17:50:37,765 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
