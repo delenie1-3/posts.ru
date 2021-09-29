@@ -39,6 +39,7 @@ def index():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
+    #flash('Зайдите в свой аакаунт для доступа к этой странице')
     form = LoginForm()
     if form.validate_on_submit():
         user = Users.query.filter_by(username=form.username.data).first()
@@ -79,7 +80,7 @@ def user(username):#функция страницы пользователя
         {'author':user, 'body':'Test post1'},
         {'author':user, 'body':'Test post2'},
     ]
-    return render_template('user.html', user=user, posts=posts)
+    return render_template('user.html', title='Профиль пользователя', user=user, posts=posts)
 
 @app.before_request
 def before_request():#Функция записи последнего посещения пользователя
