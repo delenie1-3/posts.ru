@@ -6,6 +6,9 @@
             <td><img src="{{ user.avatar(128) }}"></td><!--подобрать размерность и аватар-->
             <td>
                 <h1>Пользователь: {{ user.username }}</h1>
+                {% if user == current_user %}
+                <p><a href="{{ url_for('edit_profile') }}">Редактировать профиль</a></p>
+                {% endif %}
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}<p>Последний раз заходил: {{ user.last_seen }}</p>{% endif %}
             </td>
