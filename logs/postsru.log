@@ -98,3 +98,4 @@ Traceback (most recent call last):
   File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 118, in follow
     flash('Вы подписаны на {}!'.format(usernname))
 NameError: name 'usernname' is not defined
+2021-09-30 12:18:05,009 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]

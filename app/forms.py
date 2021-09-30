@@ -40,3 +40,7 @@ class EditProfileForm(FlaskForm):#форма редактирования дан
             user = Users.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Пожалуйста используйте другое имя пользователя')
+
+class PostForm(FlaskForm):#форма ввода постиков
+    post = TextAreaField('Запости что-нибудь!', validators=[DataRequired(), Length(min=1, max=140)])
+    submit = SubmitField('Запостить')

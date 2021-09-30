@@ -1,9 +1,9 @@
 #-*- coding: utf-8 -*-
 from flask import render_template, flash, redirect, request, url_for
 from app import app, login, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
 from flask_login import current_user, login_user
-from app.models import Users
+from app.models import Users, Posts
 from flask_login import logout_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
@@ -14,26 +14,29 @@ from datetime import datetime
 def index():
     return "Проверка работоспособности Flask"'''
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 @login_required#декоратор для не аутентифицированных
 def index():
     #user = {'username':'web-dev'}#проверочный пользователь(поддельный объект)
+    form = PostForm()
+    if form.validate_on_submit():
+        post = Posts(body=form.post.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Постик в эфире!')
+        return redirect(url_for('index'))
     posts = [
         {
-            'author':{'username':'Саша'},
-            'body':'Сообщение от Саши!'
+            'author': {'username':'user1'},
+            'body': 'Проверочное сообщение от user1'
         },
         {
-            'author':{'username':'Даша'},
-            'body':'Сообщение от Даши!'
-        },
-        {
-            'author':{'username':'Наташа'},
-            'body':'Сообщение от Наташи!'
+            'author': {'username':'user2'},
+            'body': 'Проверочное сообщение от user2'
         }
     ]
-    return render_template('index.html', title='Домашняя страница', posts=posts)#главная страница
+    return render_template('index.html', title='Домашняя страница', form=form, posts=posts)#главная страница
 
 @app.route('/login', methods=['GET','POST'])#страница входа пользователя
 def login():
@@ -132,3 +135,4 @@ def unfollow(username):#отписка от постов пользовател�
     db.session.commit()
     flash('Вы отписаны от {}!'.format(username))
     return redirect(url_for('user', username=username))
+
