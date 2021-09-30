@@ -100,3 +100,20 @@ Traceback (most recent call last):
 NameError: name 'usernname' is not defined
 2021-09-30 12:18:05,009 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
 2021-09-30 16:17:35,630 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 16:25:32,179 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 17:15:29,283 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 17:16:14,774 ERROR: Exception on /explore [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 133, in explore
+    posts = Posts.query.order_by(Post.timestamp.desc()).all()
+NameError: name 'Post' is not defined

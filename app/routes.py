@@ -127,3 +127,8 @@ def unfollow(username):#отписка от постов пользовател�
     flash('Вы отписаны от {}!'.format(username))
     return redirect(url_for('user', username=username))
 
+@app.route('/explore')
+@login_required
+def explore():#поиск пользователей
+    posts = Posts.query.order_by(Posts.timestamp.desc()).all()
+    return render_template('index.html', title="Поиск", posts=posts)
