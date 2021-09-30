@@ -26,16 +26,7 @@ def index():
         db.session.commit()
         flash('Постик в эфире!')
         return redirect(url_for('index'))
-    posts = [
-        {
-            'author': {'username':'user1'},
-            'body': 'Проверочное сообщение от user1'
-        },
-        {
-            'author': {'username':'user2'},
-            'body': 'Проверочное сообщение от user2'
-        }
-    ]
+    posts = current_user.followed_posts().all()
     return render_template('index.html', title='Домашняя страница', form=form, posts=posts)#главная страница
 
 @app.route('/login', methods=['GET','POST'])#страница входа пользователя
