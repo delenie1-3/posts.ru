@@ -42,6 +42,29 @@ class Users(UserMixin, db.Model):#Модель(таблица) пользова�
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
 
+    #функциональности подписки/отписки/отношение
+    def follow(self, user):#подписка на пользователя
+        if not self.is_following(user):
+            self.followed.append(user)
+
+    def unfollow(self, user):#отписка от пользователя
+        if self.is_following(user):
+            self.followed.remove(user)
+
+    def is_following(self, user):#отношение подписки
+        return self.followed.filter(followers.c.followed_id == users.id).count() > 0
+
+    def followed_posts(self):#запрос на получение всех постов на которые подписан и своих
+        followed = Posts.query.join(
+            followers, (followers.c.followed_id == Posts.user_id)).filter(
+                followers.c.follower_id == self.id)
+        own = Posts.query.filter_by(user_id=self.id)
+        return followed.union(own).order_by(Posts.timestamp.desc())
+        '''return Posts.query.join(
+            followers, (followers.c.followed_id == Posts.user_id).filter(
+                followers.c.follower_id == self.id).order_by(Posts.timestamp.desc())
+        )'''#без своих постов
+
 class Posts(db.Model):#Модель(таблица) постов
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
