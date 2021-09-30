@@ -102,3 +102,33 @@ def edit_profile():#функция правки полелй пользоват�
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
     return render_template('edit_profile.html', title='Изменение профиля', form=form)
+
+@app.route('/follow/<username>')#подписка на посты пользователя
+@login_required
+def follow(username):
+    user = Users.query.filter_by(username=username).first()
+    if user is None:
+        flash('Пользователь {} не найден.'.fromat(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('Вы не можете подписаться на самого себя')
+        return redirect(url_for('user', username))
+    current_user.follow(user)
+    db.session.commit()
+    flash('Вы подписаны на {}!'.format(username))
+    return redirect(url_for('user', username=username))
+
+@app.route('/unfollow/<username>')
+@login_required
+def unfollow(username):#отписка от постов пользователя
+    user = Users.query.filter_by(username=username).first()
+    if user is None:
+        flash('Пользователь {} не найден.'.fromat(username))
+        return redirect(url_for('index'))
+    if user == current_user:
+        flash('Вы не можете подписаться на самого себя')
+        return redirect(url_for('user', username))
+    current_user.unfollow(user)
+    db.session.commit()
+    flash('Вы отписаны от {}!'.format(username))
+    return redirect(url_for('user', username=username))
