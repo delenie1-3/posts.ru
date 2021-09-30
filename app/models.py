@@ -52,7 +52,7 @@ class Users(UserMixin, db.Model):#Модель(таблица) пользова�
             self.followed.remove(user)
 
     def is_following(self, user):#отношение подписки
-        return self.followed.filter(followers.c.followed_id == users.id).count() > 0
+        return self.followed.filter(followers.c.followed_id == user.id).count() > 0
 
     def followed_posts(self):#запрос на получение всех постов на которые подписан и своих
         followed = Posts.query.join(

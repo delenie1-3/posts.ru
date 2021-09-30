@@ -16,7 +16,7 @@ migrate = Migrate(app, db)#миграция БД
 login = LoginManager(app)#приложение логин
 login.login_view = 'login'#перенаправление на ввод логина
 
-if not app.debug:
+if not app.debug:#отправка сообщений
     if app.config['MAIL_SERVER']:
         auth = None
         if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:
@@ -32,7 +32,7 @@ if not app.debug:
         mail_handler.setLevel(logging.ERROR)
         app.logger.addHandler(mail_handler)
     
-    if not os.path.exists('logs'):
+    if not os.path.exists('logs'):#логгирование
         os.mkdir('logs')
     file_handler = RotatingFileHandler('logs/postsru.log', maxBytes=10240, backupCount=10)
     file_handler.setFormatter(logging.Formatter(
