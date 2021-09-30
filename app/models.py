@@ -6,8 +6,8 @@ from app import login
 from hashlib import md5
 
 followers = db.Table('followers',
-    db.Column('follower_id', db.Integer, db.ForeignKey('user_id')),
-    db.Column('followed_id', db.Integer, db.ForeignKey('user_id'))
+    db.Column('follower_id', db.Integer, db.ForeignKey('users.id')),
+    db.Column('followed_id', db.Integer, db.ForeignKey('users.id'))
 )#вспомогательная таблица для подписчиков
 
 class Users(UserMixin, db.Model):#Модель(таблица) пользователя и входа
