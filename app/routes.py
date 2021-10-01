@@ -28,8 +28,10 @@ def index():
         return redirect(url_for('index'))
     page = request.args.get('page', 1, type=int)
     posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)#вывод постов через пагинацию
+    next_url = url_for('index', page=posts.next_num) if posts.has_next else None# ссылка вперёд по пагинатору
+    prev_url = url_for('index', page=posts.prev_num) if posts.has_prev else None# ccылка назад по пагинатору
     #posts = current_user.followed_posts().all()#простой вывод сообщений
-    return render_template('index.html', title='Домашняя страница', form=form, posts=posts.items)#главная страница
+    return render_template('index.html', title='Домашняя страница', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)#главная страница
 
 @app.route('/login', methods=['GET','POST'])#страница входа пользователя
 def login():
@@ -134,4 +136,6 @@ def unfollow(username):#отписка от постов пользовател�
 def explore():#поиск пользователей
     page = request.args.get('page', 1, type=int)
     posts = Posts.query.order_by(Posts.timestamp.desc()).paginate(page, app.config['POSTS_PER_PAGE'], False)#вместо all() (пагинация)
-    return render_template('index.html', title="Поиск", posts=posts.items)
+    next_url = url_for('explore', page=posts.next_num) if posts.has_next else None# ссылка вперёд по пагинатору
+    prev_url = url_for('explore', page=posts.prev_num) if posts.has_prev else None# ccылка назад по пагинатору
+    return render_template('index.html', title="Поиск", posts=posts.items, next_url=next_url, prev_url=prev_url)

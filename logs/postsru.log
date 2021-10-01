@@ -15,3 +15,21 @@ Traceback (most recent call last):
 KeyError: 'POSTS_PER_PAGE'
 2021-10-01 09:56:51,847 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
 2021-10-01 09:57:12,631 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 09:57:37,154 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 10:18:29,811 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 10:18:33,791 ERROR: Exception on /index [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 32, in index
+    prev_url = url_for('index', page=posts.prev_num) if poats.has_prev else None# ccылка назад по пагинатору
+NameError: name 'poats' is not defined
+2021-10-01 10:19:16,561 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
