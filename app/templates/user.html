@@ -29,4 +29,10 @@
     </table>резерв вывода сообщений-->
         {% include '_post.html'%}
     {% endfor %}
+    {% if prev_url %}
+        <a href="{{ prev_url }}"><--Новые постики</a>
+    {% endif %}
+    {% if next_url %}
+        <a href="{{ next_url }}">Старые постики--></a>
+    {% endif %}
 {% endblock %}
