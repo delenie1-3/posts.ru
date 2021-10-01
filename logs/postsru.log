@@ -36,3 +36,6 @@ NameError: name 'poats' is not defined
 2021-10-01 10:20:50,414 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
 2021-10-01 10:57:12,623 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
 2021-10-01 11:17:27,641 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
+2021-10-01 12:11:13,444 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
+2021-10-01 12:11:26,837 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
+2021-10-01 12:11:47,640 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
