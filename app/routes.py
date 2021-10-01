@@ -26,8 +26,10 @@ def index():
         db.session.commit()
         flash('Постик в эфире!')
         return redirect(url_for('index'))
-    posts = current_user.followed_posts().all()
-    return render_template('index.html', title='Домашняя страница', form=form, posts=posts)#главная страница
+    page = request.args.get('page', 1, type=int)
+    posts = current_user.followed_posts().paginate(page, app.config['POSTS_PER_PAGE'], False)#вывод постов через пагинацию
+    #posts = current_user.followed_posts().all()#простой вывод сообщений
+    return render_template('index.html', title='Домашняя страница', form=form, posts=posts.items)#главная страница
 
 @app.route('/login', methods=['GET','POST'])#страница входа пользователя
 def login():
@@ -130,5 +132,6 @@ def unfollow(username):#отписка от постов пользовател�
 @app.route('/explore')
 @login_required
 def explore():#поиск пользователей
-    posts = Posts.query.order_by(Posts.timestamp.desc()).all()
-    return render_template('index.html', title="Поиск", posts=posts)
+    page = request.args.get('page', 1, type=int)
+    posts = Posts.query.order_by(Posts.timestamp.desc()).paginate(page, app.config['POSTS_PER_PAGE'], False)#вместо all() (пагинация)
+    return render_template('index.html', title="Поиск", posts=posts.items)

@@ -17,4 +17,5 @@ class Config(object):#класс конфигурации приложения
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['delenie1.3@gmail.com']
 
-
+    #настройка пагинации, кол-во элементов на главной
+    POSTS_PER_PAGE = 3

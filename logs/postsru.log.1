@@ -1,15 +1,10 @@
-2021-09-29 14:53:02,508 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 14:53:15,599 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 14:54:14,226 ERROR: Exception on /edit_profile [POST] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1799, in _execute_context
-    self.dialect.do_execute(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: users.username
-
-The above exception was the direct cause of the following exception:
-
+2021-09-30 08:55:09,694 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 08:55:40,937 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 11:42:02,665 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 11:44:22,554 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 11:45:37,938 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 12:14:24,842 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 12:15:10,685 ERROR: Exception on /user/user2 [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -21,64 +16,26 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 98, in edit_profile
-    db.session.commit()
-  File "<string>", line 2, in commit
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1428, in commit
-    self._transaction.commit(_to_root=self.future)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\session.py", line 829, in commit
-    self._prepare_impl()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\session.py", line 808, in _prepare_impl
-    self.session.flush()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3339, in flush
-    self._flush(objects)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3479, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 70, in __exit__
-    compat.raise_(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
-    raise exception
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\session.py", line 3439, in _flush
-    flush_context.execute()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 456, in execute
-    rec.execute(self)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 630, in execute
-    util.preloaded.orm_persistence.save_obj(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 234, in save_obj
-    _emit_update_statements(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\persistence.py", line 998, in _emit_update_statements
-    c = connection._execute_20(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1611, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\sql\elements.py", line 323, in _execute_on_connection
-    return connection._execute_clauseelement(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1478, in _execute_clauseelement
-    ret = self._execute_context(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
-    self._handle_dbapi_exception(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2023, in _handle_dbapi_exception
-    util.raise_(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\util\compat.py", line 207, in raise_
-    raise exception
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1799, in _execute_context
-    self.dialect.do_execute(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\engine\default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: users.username
-[SQL: UPDATE users SET username=?, about_me=? WHERE users.id = ?]
-[parameters: ('user1', 'Я проверочный пользователь 2', 2)]
-(Background on this error at: https://sqlalche.me/e/14/gkpj)
-2021-09-29 17:50:03,157 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 17:50:37,765 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:28:45,979 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:29:34,139 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:29:53,386 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:33:35,180 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:38:58,387 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:42:01,888 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-29 19:43:04,011 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-30 08:47:30,776 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-09-30 08:47:57,383 ERROR: Exception on /login [POST] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 83, in user
+    return render_template('user.html', title='Профиль пользователя', user=user, posts=posts)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\user.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\user.html", line 14, in block 'content'
+    {% elif not current_user.is_folllowing(user) %}
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\utils.py", line 84, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'app.models.Users object' has no attribute 'is_folllowing'
+2021-09-30 12:16:32,788 ERROR: Exception on /user/user2 [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -88,46 +45,78 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 45, in login
-    user = Users.query.filter_by(username=form.username.data).first()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_sqlalchemy\__init__.py", line 550, in __get__
-    mapper = orm.class_mapper(type)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\base.py", line 442, in class_mapper
-    mapper = _inspect_mapped_class(class_, configure=configure)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\base.py", line 421, in _inspect_mapped_class
-    mapper._check_configure()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1873, in _check_configure
-    _configure_registries({self.registry}, cascade=True)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3380, in _configure_registries
-    _do_configure_registries(registries, cascade)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 3419, in _do_configure_registries
-    mapper._post_configure_properties()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\mapper.py", line 1890, in _post_configure_properties
-    prop.init()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\interfaces.py", line 222, in init
-    self.do_init()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2144, in do_init
-    self._setup_join_conditions()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2240, in _setup_join_conditions
-    self._join_condition = jc = JoinCondition(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2637, in __init__
-    self._annotate_fks()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2882, in _annotate_fks
-    self._annotate_present_fks()
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2935, in _annotate_present_fks
-    self.primaryjoin = visitors.cloned_traverse(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 783, in cloned_traverse
-    obj = clone(
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 779, in clone
-    meth(newelem)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2926, in visit_binary
-    col = is_foreign(binary.left, binary.right)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\orm\relationships.py", line 2905, in is_foreign
-    if a.references(b):
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\sql\schema.py", line 1710, in references
-    if fk.column.proxy_set.intersection(column.proxy_set):
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\util\langhelpers.py", line 1113, in __get__
-    obj.__dict__[self.__name__] = result = self.fget(obj)
-  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\sqlalchemy\sql\schema.py", line 2383, in column
-    raise exc.NoReferencedTableError(
-sqlalchemy.exc.NoReferencedTableError: Foreign key associated with column 'followers.follower_id' could not find table 'user_id' with which to generate a foreign key to target column 'None'
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 83, in user
+    return render_template('user.html', title='Профиль пользователя', user=user, posts=posts)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\user.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\base.html", line 34, in top-level template code
+    {% block content %}{% endblock %}
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\user.html", line 14, in block 'content'
+    {% elif not current_user.is_following(user) %}
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\utils.py", line 84, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: 'app.models.Users object' has no attribute 'is_folllowing'
+2021-09-30 12:16:41,738 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 12:16:53,454 ERROR: Exception on /follow/user2 [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 118, in follow
+    flash('Вы подписаны на {}!'.format(usernname))
+NameError: name 'usernname' is not defined
+2021-09-30 12:17:16,682 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 12:17:46,546 ERROR: Exception on /follow/user2 [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 118, in follow
+    flash('Вы подписаны на {}!'.format(usernname))
+NameError: name 'usernname' is not defined
+2021-09-30 12:18:05,009 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 16:17:35,630 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 16:25:32,179 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 17:15:29,283 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-09-30 17:16:14,774 ERROR: Exception on /explore [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 133, in explore
+    posts = Posts.query.order_by(Post.timestamp.desc()).all()
+NameError: name 'Post' is not defined
+2021-09-30 17:16:47,395 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 08:55:44,186 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 09:34:46,004 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
