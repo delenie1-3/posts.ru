@@ -6,9 +6,12 @@ from flask_login import LoginManager
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from flask_mail import Mail
 
 app = Flask(__name__)#основное приложение
 app.config.from_object(Config)#приложение конфигурации
+
+mail = Mail(app)
 
 db = SQLAlchemy(app)#БД
 migrate = Migrate(app, db)#миграция БД

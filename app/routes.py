@@ -1,12 +1,13 @@
 #-*- coding: utf-8 -*-
 from flask import render_template, flash, redirect, request, url_for
 from app import app, login, db
-from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm
+from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, ResetPasswordRequestForm
 from flask_login import current_user, login_user
 from app.models import Users, Posts
 from flask_login import logout_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
+from app.email import send_pssword_reset_email
 
 
 '''@app.route('/')
@@ -139,3 +140,16 @@ def explore():#поиск пользователей
     next_url = url_for('explore', page=posts.next_num) if posts.has_next else None# ссылка вперёд по пагинатору
     prev_url = url_for('explore', page=posts.prev_num) if posts.has_prev else None# ccылка назад по пагинатору
     return render_template('index.html', title="Поиск", posts=posts.items, next_url=next_url, prev_url=prev_url)
+
+@app.route('/reset_password_request', methods=['GET', 'POST'])#отправка сообщения сброса пароля
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = ResetPasswordRequestForm()
+    if form.validate_on_submit():
+        user = Users.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('Проверьте Ваш почтовый ящик, для изменения вашего пароля')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html', title='Изменение пароля', form=form)

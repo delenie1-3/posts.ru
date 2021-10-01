@@ -34,3 +34,5 @@ Traceback (most recent call last):
 NameError: name 'poats' is not defined
 2021-10-01 10:19:16,561 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
 2021-10-01 10:20:50,414 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 10:57:12,623 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
+2021-10-01 11:17:27,641 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
