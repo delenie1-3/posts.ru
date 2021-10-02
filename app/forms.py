@@ -45,6 +45,12 @@ class PostForm(FlaskForm):#форма ввода постиков
     post = TextAreaField('Запости что-нибудь!', validators=[DataRequired(), Length(min=1, max=140)])
     submit = SubmitField('Запостить')
 
-class ResetPasswordRequestForm(FlaskForm):
+#Классы изменения пароля пользователя
+class ResetPasswordRequestForm(FlaskForm):#отправка сообщения о смене пароля
     email = StringField('email', validators=[DataRequired(), Email()])
+    submit = SubmitField('Изменить пароль')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    password2 = PasswordField('Повторите пароль', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Изменить пароль')
