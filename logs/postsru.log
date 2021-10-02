@@ -1,4 +1,4 @@
-2021-10-01 09:34:49,516 ERROR: Exception on /explore [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+2021-10-02 11:22:57,617 ERROR: Exception on /index [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,14 +10,26 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 136, in explore
-    posts = Posts.query.order_by(Posts.timestamp.desc()).paginate(page, app.config['POSTS_PER_PAGE'], False)#вместо all() (пагинация)
-KeyError: 'POSTS_PER_PAGE'
-2021-10-01 09:56:51,847 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 09:57:12,631 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 09:57:37,154 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 10:18:29,811 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 10:18:33,791 ERROR: Exception on /index [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 35, in index
+    return render_template('index.html', title='Домашняя страница', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)#главная страница
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 757, in compile
+    self.handle_exception(source=source_hint)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\index.html", line 2, in template
+    {% import 'bootstrap/wtrf' %}
+jinja2.exceptions.TemplateSyntaxError: expected token 'as', got 'end of statement block'
+2021-10-02 11:22:58,153 ERROR: Exception on /index [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -29,20 +41,56 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 32, in index
-    prev_url = url_for('index', page=posts.prev_num) if poats.has_prev else None# ccылка назад по пагинатору
-NameError: name 'poats' is not defined
-2021-10-01 10:19:16,561 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 10:20:50,414 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 10:57:12,623 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:44]
-2021-10-01 11:17:27,641 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-01 12:11:13,444 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-01 12:11:26,837 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-01 12:11:47,640 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-01 14:49:54,635 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-01 14:56:56,722 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-01 15:29:31,988 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-02 08:58:57,398 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-02 09:31:42,994 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-02 09:34:38,545 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
-2021-10-02 09:39:20,666 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:47]
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 35, in index
+    return render_template('index.html', title='Домашняя страница', form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)#главная страница
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 757, in compile
+    self.handle_exception(source=source_hint)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\index.html", line 2, in template
+    {% import 'bootstrap/wtrf' %}
+jinja2.exceptions.TemplateSyntaxError: expected token 'as', got 'end of statement block'
+2021-10-02 11:23:35,867 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:50]
+2021-10-02 11:24:35,159 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:50]
+2021-10-02 11:27:24,386 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:50]
+2021-10-02 11:31:10,683 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:50]
+2021-10-02 11:31:12,688 ERROR: Exception on /login [GET] [in c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:\Р\Задачи\flask\posts.ru\app\routes.py", line 53, in login
+    return render_template('login.html', title='Вход', form=form)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\flask\templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\loaders.py", line 137, in load
+    code = environment.compile(source, name, filename)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 757, in compile
+    self.handle_exception(source=source_hint)
+  File "c:\р\задачи\flask\posts.ru\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Р\Задачи\flask\posts.ru\app\templates\login.html", line 2, in template
+    {% include 'bootstrap/wtf.html' as wtf %}
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of statement block', got 'as'
+2021-10-02 11:33:17,467 INFO: Запуск Posts.ru [in C:\Р\Задачи\flask\posts.ru\app\__init__.py:50]

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if title%}
+        <title>{{ title }} - Posts</title>
+        {% else %}
+        <title>Добро пожаловать на Posts.ru!</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            Posts.ru: 
+            <a href="{{ url_for('index') }}">Главная</a>
+            {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Вход</a>
+            {% else %}
+            <a href="{{ url_for('user', username=current_user.username) }}">Профиль</a>
+            <a href="{{ url_for('logout') }}">Выход</a>
+            <a href="{{ url_for('explore') }}">Поиск</a>
+            {% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -7,11 +7,14 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask_mail import Mail
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)#основное приложение
 app.config.from_object(Config)#приложение конфигурации
 
-mail = Mail(app)
+mail = Mail(app)# игициализация зброса пароля
+
+bootstrap = Bootstrap(app)#инициализация бутстрапа
 
 db = SQLAlchemy(app)#БД
 migrate = Migrate(app, db)#миграция БД

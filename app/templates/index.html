@@ -1,19 +1,10 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
-{% block content %}
+{% block app_content %}
     <h1>Приветствую, {{ current_user.username }}!</h1>
     {% if form %}
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.post.label }}<br>
-            {{ form.post(cols=32, rows=4) }}<br>
-            {% for error in form.post.errors %}
-                <span style="color:red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+        {{ wtf.quick_form(form) }}
     {% endif %}
     {% for post in posts %}
         <!---<p>
@@ -21,10 +12,24 @@
         </p> старая версия вывода постов--> 
         {% include '_post.html' %}
     {% endfor %}
-    {% if prev_url %}
+    <!--{% if prev_url %}
         <a href="{{ prev_url }}"><--Новые постики</a>
     {% endif %}
     {% if next_url %}
-        <a href="{{ next_url }}">Старые постики--></a>
-    {% endif %}
+        <a href="{{ next_url }}">Старые постики-></a>
+    {% endif %}-->
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> Новые постики
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    Старые постики <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 {% endblock %}
